@@ -1,0 +1,32 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title>
+      <strong class="Title">
+        Admin
+      </strong>
+      <ion-icon (click)="cerrarSesion()" name="log-out-outline" style="float: right; width: 30px; height: 30px; color: goldenrod;"></ion-icon>      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="Tab1()">              
+        <ion-label><ion-icon name="earth-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>                      
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="Tab2()">              
+        <ion-label><ion-icon name="car-sport-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="Tab3()">    
+        <ion-label><ion-icon name="book-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs> 
+  
+</ion-content>

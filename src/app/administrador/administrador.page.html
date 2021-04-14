@@ -1,0 +1,157 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title>
+      <strong class="Title">
+        Admin
+      </strong>
+      <ion-icon (click)="cerrarSesion()" name="log-out-outline" style="float: right; width: 30px; height: 30px; color: rgb(255, 255, 255);"></ion-icon>      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ioncontent">
+      
+
+  <ion-slides pager="true">
+
+    <ion-slide>
+        <ion-card style="--ion-background-color: rgba(216, 236, 161, 0.712); padding-bottom: 20px;">
+          <form #form="ngForm" ngForm="form" (ngSubmit)="altaAdmin(form)" style="width: 350px;">            
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input [(ngModel)]="usu.strNombre" name="strNombre" type="text"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input [(ngModel)]="usu.strPassword" name="strPassword" type="password"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input [(ngModel)]="usu.strCorreo" name="strCorreo" type="email"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Direccion</ion-label>
+              <ion-input [(ngModel)]="usu.strDireccion" name="strDireccion" type="text"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgb(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Edad</ion-label>
+              <ion-input [(ngModel)]="usu.nmbEdad" name="nmbEdad" type="number"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgb(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Telefonos</ion-label>
+              <ion-input [(ngModel)]="usu.arrTelefonos" name="arrTelefonos" type="number"></ion-input>
+            </ion-item>                         
+            <ion-item style="color: rgb(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Tipo de usuario</ion-label>
+              <ion-input [(ngModel)]="usu.tipo" name="tipo" type="text" disabled></ion-input>
+            </ion-item>                         
+            <div style="display: flex; justify-content: center; margin: 20px;">
+              <ion-button type="submit">Registrar</ion-button>
+              <ion-button (click)="regresar()" color="danger">Regresar</ion-button>
+            </div>                        
+          </form>          
+
+          <div style="display: flex; justify-content: center;">
+            <strong style="padding-top: 10px; color: rgba(0, 0, 0);">Ver administradores:</strong>
+            <ion-toggle color="primary" #toggle></ion-toggle>
+          </div>
+          
+          <ion-list class="white" *ngIf="toggle.checked">
+            <ion-item style="background-color: cornflowerblue; margin: 10px;" *ngFor="let r of usuario">
+              <ion-icon name="body-outline" style="color: rgba(0, 0, 0);" slot="start"></ion-icon>
+              <div>
+                <p style="color: rgba(0, 0, 0)">{{ r.tipo }}</p>
+                <p style="color: rgba(0, 0, 0)">{{ r.strNombre }}</p>
+                <p style="color: rgba(0, 0, 0)">{{ r.strCorreo }}</p>                
+              </div>
+            </ion-item>    
+          </ion-list>
+        </ion-card>
+
+    </ion-slide>
+      
+    <ion-slide>
+        <ion-card style="--ion-background-color: rgba(216, 236, 161, 0.712); padding-bottom: 20px;">
+          <form #form="ngForm" ngForm="form" (ngSubmit)="editar(form)" style="width: 350px;">            
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input [(ngModel)]="usu.strNombre" name="strNombre" type="text"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input [(ngModel)]="usu.strPassword" name="strPassword" type="password"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input [(ngModel)]="usu.strCorreo" name="strCorreo" type="email"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Direccion</ion-label>
+              <ion-input [(ngModel)]="usu.strDireccion" name="strDireccion" type="text"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Edad</ion-label>
+              <ion-input [(ngModel)]="usu.nmbEdad" name="nmbEdad" type="number"></ion-input>
+            </ion-item>
+            <ion-item style="color: rgba(0, 0, 0); background: turquoise;">
+              <ion-label position="floating">Telefonos</ion-label>
+              <ion-input [(ngModel)]="usu.arrTelefonos" name="arrTelefonos" type="number"></ion-input>
+            </ion-item> 
+            <div style="display: flex; justify-content: center; margin: 20px;">
+              <ion-button color="warning" type="submit">Modificar</ion-button>              
+              <ion-button (click)="regresar()" color="tertiary">Regresar</ion-button>
+            </div> 
+          </form>
+          <div style="display: flex; justify-content: center;">
+            <strong style="padding-top: 10px; color: rgba(0, 0, 0);">Ver administradores:</strong>
+            <ion-toggle color="primary" #toggle2></ion-toggle>
+          </div>
+          
+          <ion-list class="white" *ngIf="toggle2.checked">
+            <ion-item style="background-color: cornflowerblue; margin: 10px;" *ngFor="let r of usuario">
+              <ion-icon name="body-outline" style="color: rgba(0, 0, 0);" slot="start"></ion-icon>
+              <div>
+                <p style="color: rgba(0, 0, 0)">{{ r.tipo }}</p>
+                <p style="color: rgba(0, 0, 0)">{{ r.strNombre }}</p>
+                <p style="color: rgba(0, 0, 0)">{{ r.strCorreo }}</p>                
+                <ion-button (click)="select(r._id)">Seleccionar</ion-button>       
+              </div>
+            </ion-item>    
+          </ion-list>
+
+        </ion-card>
+    </ion-slide>
+
+
+    <ion-slide>
+        <ion-card style="--ion-background-color: rgba(216, 236, 161, 0.712); padding-bottom: 20px;">
+          <form #form="ngForm" ngForm="form" (ngSubmit)="eliminar()" style="width: 350px;">            
+            <div style="display: flex; justify-content: center; margin: 20px;">
+              <ion-button color="danger" type="submit">Eliminar</ion-button>              
+              <ion-button (click)="regresar()" color="tertiary">Regresar</ion-button>
+            </div>        
+          </form>
+          <div style="display: flex; justify-content: center;">
+            <strong style="padding-top: 10px; color: rgba(0, 0, 0);">Ver administradores:</strong>
+            <ion-toggle color="primary" #toggle3></ion-toggle>
+          </div>
+          
+          <ion-list class="white" *ngIf="toggle3.checked">
+            <ion-item style="background-color: cornflowerblue; margin: 10px;" *ngFor="let r of usuario">
+              <ion-icon name="body-outline" style="color: rgba(0, 0, 0);" slot="start"></ion-icon>
+              <div>
+                <p style="color: rgba(0, 0, 0)">{{ r.tipo }}</p>
+                <p style="color: rgba(0, 0, 0)">{{ r.strNombre }}</p>
+                <p style="color: rgba(0, 0, 0)">{{ r.strCorreo }}</p>
+                <ion-button (click)="select(r._id)">Seleccionar</ion-button>       
+              </div>
+            </ion-item>    
+          </ion-list>
+
+        </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+  
+</ion-content>
+

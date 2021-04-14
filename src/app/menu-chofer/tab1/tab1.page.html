@@ -1,0 +1,72 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title>
+      <strong class="Title">
+        Registro de viajes
+      </strong>
+      <ion-icon (click)="cerrarSesion()" name="log-out-outline" style="float: right; width: 30px; height: 30px; color: rgba(255, 255 ,255);"></ion-icon>      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro de viajes</ion-title>
+      <ion-icon (click)="cerrarSesion()" name="log-out-outline" style="float: right; width: 30px; height: 30px; color: goldenrod;"></ion-icon> 
+    </ion-toolbar>
+  </ion-header> -->
+
+
+
+    <div id="map" style="height: 50%;"></div>
+
+
+  <div class="container">
+    <form (ngSubmit)="altaViaje(forma)" #forma="ngForm">
+      <ion-item>
+        <ion-label class="font-weight-bolder" position="stacked">Origen:</ion-label>
+        <ion-input [(ngModel)]="viaje.origenChofer" name="origenChofer"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="font-weight-bolder" position="stacked">Destino:</ion-label>
+        <ion-input [(ngModel)]="viaje.destinoChofer" name="destinoChofer"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="font-weight-bolder" position="stacked">Cantidad a cobrar por pasajero:</ion-label>
+        <div class="d-flex">
+          <span class="pt-2 pr-2">$</span><ion-input [(ngModel)]="viaje.cobroChofer" name="cobroChofer"></ion-input>
+        </div>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label class="font-weight-bolder" position="stacked">Ubicaciones por las que pasará:</ion-label>
+        <ion-input [(ngModel)]="viaje.ubicacionesChofer" name="ubicacionesChofer"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="font-weight-bolder" position="stacked">Limite de pasajeros:</ion-label>
+        <ion-input [(ngModel)]="viaje.pasajerosChofer" name="pasajerosChofer"></ion-input>
+      </ion-item> -->
+      <ion-button class="mt-3" expand="block" fill="outline" color="danger" (click)="altaViaje(forma)">Aceptar</ion-button>
+    </form>
+  </div>
+
+  <hr>
+
+  <ion-tabs style="max-height: 50px; top: auto; color: rgb(250, 218, 218);">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="Tab1()">              
+        <ion-label><ion-icon name="earth-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>                      
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="Tab2()">              
+        <ion-label><ion-icon name="car-sport-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="Tab3()">    
+        <ion-label><ion-icon name="book-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs> 
+
+</ion-content>

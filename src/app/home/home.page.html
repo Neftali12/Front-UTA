@@ -1,0 +1,37 @@
+
+
+  <ion-header [translucent]="true" class="toolbar">
+    <ion-toolbar>
+      <ion-title class="title">
+        <img src="../../assets/uta.jpg" width="35px" height="35px" style="margin: 0%;" class="img">
+        <strong style="bottom: -3px; left: 10px; position: relative;">
+         log in
+        </strong> 
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true" class="background">
+    
+    <ion-header collapse="condense">
+      
+    </ion-header>
+  
+    <div id="container" class="contenedor">
+      <ion-icon name="car-sport-outline" style="color: white; width: 50px; height: 50px;"></ion-icon>
+      <ion-item class="as">
+        <ion-label position="floating">Correo electrónico:</ion-label>
+        <ion-input name="strCorreo" [(ngModel)]="usuarios.strCorreo"></ion-input>
+      </ion-item>
+      <ion-item class="as">
+        <ion-label position="floating">Contraseña:</ion-label>
+        <ion-input type="password" name="strPassword" [(ngModel)]="usuarios.strPassword"></ion-input>
+      </ion-item>
+  
+      <ion-button expand="block" color="dark" (click)="logForm(usuarios)">Iniciar sesión</ion-button>
+      <a href="/regusu">¿No tienes Cuenta? <br> Registrase</a>
+  
+    </div>
+  
+  </ion-content>
+

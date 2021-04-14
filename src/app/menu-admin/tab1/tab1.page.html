@@ -1,0 +1,88 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title>
+      <strong class="Title">
+        Administrador
+      </strong>
+      <ion-icon (click)="cerrarSesion()" name="log-out-outline" style="float: right; width: 30px; height: 30px; color: goldenrod;"></ion-icon>      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ioncontent">  
+  
+  
+  <div class="divConteiner">
+    <strong>
+      <h2>Menú</h2>
+    </strong>
+  </div>
+
+  <ion-slides pager="true" [options]="">
+
+    <ion-slide>
+      <ion-card class="fondo">
+        <img class="img" src="../../assets/reportes.jpg" style="height: 45%;" alt="">
+        <ion-card-header>   
+          <ion-card-title class="titleCard">Reportes generales</ion-card-title>
+        </ion-card-header>      
+        <ion-card-content class="titleCard">
+          Apartado para reportes generales.
+          <div class="reporte">
+            <strong style="margin-right: 5px;">Reportes:</strong><ion-badge slot="end">22</ion-badge>          
+          </div>
+          <ion-button style="width: 100%; top: 70px; position: inherit;" color="danger" (click)="reportes()">Navegar</ion-button>
+        </ion-card-content>
+      </ion-card>  
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card class="fondo3">
+        <img src="../../assets/pagos.jpg" style="height: 45%;" alt="">        
+        <ion-card-header>   
+          <ion-card-title class="titleCard">Pagos</ion-card-title>
+        </ion-card-header>      
+        <ion-card-content class="titleCard">
+          Apartado para realizar pagos
+          <div class="reporte">
+            <strong style="margin-right: 5px;">Realizar pagos:</strong><ion-badge slot="end">10</ion-badge>          
+          </div>          
+          <ion-button style="width: 100%; top: 70px; position: inherit;" color="danger" (click)="pagos()">Navegar</ion-button>
+        </ion-card-content>
+      </ion-card>  
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card class="fondo4">
+        <img src="../../assets/cambios.jpg" style="height: 45%;" alt="">        
+        <ion-card-header>   
+          <ion-card-title class="titleCard">Administradores</ion-card-title>
+        </ion-card-header>      
+        <ion-card-content class="titleCard">
+          Apartado para administradores
+          <div class="reporte">
+            <strong style="margin-right: 5px;">Pagos:</strong><ion-badge slot="end">10</ion-badge>          
+          </div>          
+          <ion-button style="width: 100%; top: 70px; position: inherit;" color="danger" (click)="admin()">Navegar</ion-button>
+        </ion-card-content>
+      </ion-card>  
+    </ion-slide>
+    
+    
+  </ion-slides>  
+  
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="Tab1()">              
+        <ion-label><ion-icon name="person-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>                      
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="Tab3()">    
+        <ion-label><ion-icon name="accessibility-outline" style="width: 30px; height: 30px;"></ion-icon></ion-label>
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs> 
+    
+</ion-content>
+  

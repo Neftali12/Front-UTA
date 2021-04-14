@@ -1,0 +1,84 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title class="Title">Pagos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ioncontent">
+
+  <ion-slides>    
+    <ion-slide>
+
+      <ion-card style="--ion-background-color: rgba(216, 236, 161, 0.712); padding-bottom: 20px;">
+        <form #form="ngForm" ngForm="form" (ngSubmit)="guardar(form)" style="width: 350px;">    
+          <ion-item style="color: rgb(0, 0, 0); background: turquoise;">
+            <ion-label position="floating">
+              <span class="text-nomb">Cantidad</span>
+            </ion-label>
+            <ion-input  type="number" required [(ngModel)]="pag.cantidad" name="cantidad"></ion-input>
+          </ion-item>         
+          <ion-item style="color: rgb(0, 0, 0); background: turquoise;">
+            <ion-label>Tipo de pago</ion-label>
+            <ion-select [(ngModel)]="pag.tipoPago" name="tipoPago" placeholder="Selecciona">          
+              <ion-select-option value="efectivo">Efectivo</ion-select-option>
+              <ion-select-option value="tarjeta">Tarjeta</ion-select-option>
+            </ion-select>
+          </ion-item>            
+          <div style="display: flex; justify-content: center; text-align: center;">
+            <div class="margin">          
+              <ion-label class="count">Efectivo: <ion-badge slot="end">{{ efect }}</ion-badge></ion-label><br>
+              <ion-label class="count">Tarjeta: <ion-badge slot="end">{{ tarjeta }}</ion-badge></ion-label>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: center; margin: 20px;">
+            <ion-button type="submit">Registrar</ion-button>
+            <ion-button (click)="regresar()" color="tertiary">Regresar</ion-button>
+          </div>
+        </form>
+        <div style="display: flex; justify-content: center;">
+          <strong style="padding-top: 10px; color: rgba(0, 0, 0);">Ver pagos:</strong>
+          <ion-toggle color="primary" #toggle></ion-toggle>
+        </div>        
+        <ion-list class="white" *ngIf="toggle.checked">
+          <ion-item style="background-color: cornflowerblue; margin: 10px;" *ngFor="let r of datos">
+            <ion-icon name="body-outline" style="color: rgba(0, 0, 0);" slot="start"></ion-icon>
+            <div>
+              <p style="color: rgba(0, 0, 0)">{{ r.cantidad }}</p>
+              <p style="color: rgba(0, 0, 0)">{{ r.tipoPago }}</p>                      
+            </div>
+          </ion-item>    
+        </ion-list>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+
+      <ion-card style="--ion-background-color: rgba(216, 236, 161, 0.712); padding-bottom: 20px;">
+        <form #form="ngForm" ngForm="form" (ngSubmit)="eliminar()" style="width: 350px;">    
+          <div style="display: flex; justify-content: center; margin: 20px;">
+            <ion-button type="submit" color="danger">Eliminar</ion-button>
+            <ion-button (click)="regresar()" color="tertiary">Regresar</ion-button>
+          </div>
+        </form>
+        <div style="display: flex; justify-content: center;">
+          <strong style="padding-top: 10px; color: rgba(0, 0, 0);">Ver pagos:</strong>
+          <ion-toggle color="primary" #toggle2></ion-toggle>
+        </div>        
+        <ion-list class="white" *ngIf="toggle2.checked">
+          <ion-item style="background-color: cornflowerblue; margin: 10px;" *ngFor="let r of datos">
+            <ion-icon name="body-outline" style="color: rgba(0, 0, 0);" slot="start"></ion-icon>
+            <div>
+              <p style="color: rgba(0, 0, 0)">{{ r.cantidad }}</p>
+              <p style="color: rgba(0, 0, 0)">{{ r.tipoPago }}</p>                            
+              <ion-button (click)="select(r._id)">Seleccionar</ion-button>       
+            </div>
+          </ion-item>    
+        </ion-list>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+  
+
+</ion-content>

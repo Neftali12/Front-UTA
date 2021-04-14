@@ -1,0 +1,45 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title class="Title">Altas de usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ioncontent">
+
+  <ion-card style="--ion-background-color: rgba(0, 6, 85, 0.712);">
+    <form #form="ngForm" ngForm="form" (ngSubmit)="guardar(form)">
+      <ion-item style="color: white; background: turquoise;">
+        <ion-label position="floating">
+          <span class="text-nomb">Nombre</span>
+        </ion-label>
+        <ion-input  type="text" required [(ngModel)]="model.strCorreo" name="email"></ion-input>
+      </ion-item>
+      <ion-item style="color: white; background: turquoise;">        
+        <ion-label position="floating">
+          <span class="text-nomb">Contraseña</span>
+        </ion-label>        
+        <ion-input  type="password" required [(ngModel)]="model.strPassword" name="password"></ion-input>
+      </ion-item>           
+      <ion-item style="color: white; background: turquoise;">
+        <ion-label>Tipo de usuario</ion-label>
+        <ion-select [(ngModel)]="model.tipo" name="typeUser" placeholder="Selecciona">
+          <ion-select-option value="admin">Administrador</ion-select-option>
+          <ion-select-option value="user">Pasajero</ion-select-option>
+          <ion-select-option value="chof">Chofer</ion-select-option>
+        </ion-select>
+      </ion-item>            
+      <div style="display: flex; justify-content: center; text-align: center;">
+        <div class="margin">
+          <ion-label class="count">Administradores: <ion-badge slot="end">{{ admin }}</ion-badge></ion-label><br>
+          <ion-label class="count">Pasajeros: <ion-badge slot="end">{{ user }}</ion-badge></ion-label><br>
+          <ion-label class="count">Choferes: <ion-badge slot="end">{{ chof }}</ion-badge></ion-label>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; margin: 20px;">
+        <ion-button type="submit">Registrar</ion-button>
+        <ion-button (click)="regresar()" color="tertiary">Regresar</ion-button>
+      </div>
+    </form>
+  </ion-card>
+
+</ion-content>

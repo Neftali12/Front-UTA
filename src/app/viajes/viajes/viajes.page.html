@@ -1,0 +1,43 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu-user"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Viajes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <h2>Viajes</h2>
+    <ion-grid *ngFor="let viajeFecha of viajeChoferService.viajeChofer">
+      <ion-row>
+        <ion-col>
+          <div>
+            {{viajeFecha.fechaViaje}}
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            {{viajeFecha.horaViaje}} horas
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            ${{viajeFecha.cobroChofer}}.00
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+            {{viajeFecha.ubicacionesChofer}}
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            {{viajeFecha.pasajerosChofer}} pasajeros
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,90 @@
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-title>
+      <strong class="Title">
+        Reportes generales
+      </strong>
+      <!-- <ion-icon (click)="cerrarSesion()" name="log-out-outline"
+        style="float: right; width: 30px; height: 30px; color: rgb(255, 255, 255);"></ion-icon> -->
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Reportes generales</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <!-- <div class="container">
+    <h2 class="text-center">Viajes realizados</h2>
+    <table class="table table-dark table-striped" >
+      <thead>
+        <tr>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Hora</th>
+          <th class="text-center">Monto cobrado por pasajero</th>
+          <th class="text-center">Ubicaciones por las que pasará</th>
+          <th class="text-center">Limite de Pasajeros</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viajeFecha of viajeChoferService.viajeChofer">
+          <th class="text-center">{{viajeFecha.fechaViaje}}</th>
+          <th class="text-center">{{viajeFecha.horaViaje}} horas</th>
+          <th class="text-center">${{viajeFecha.cobroChofer}}.00</th>
+          <th class="text-center">{{viajeFecha.ubicacionesChofer}}</th>
+          <th class="text-center">{{viajeFecha.pasajerosChofer}} pasajeros</th>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  <div class="container">
+    <h2>Viajes</h2>
+    <ion-grid *ngFor="let viajeFecha of viajeChoferService.viajeChofer">
+      <ion-row>
+        <ion-col>
+          <div>
+            {{viajeFecha.fechaViaje}}
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            {{viajeFecha.horaViaje}} horas
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            ${{viajeFecha.cobroChofer}}.00
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="Tab1()">
+        <ion-label>
+          <ion-icon name="earth-outline" style="width: 30px; height: 30px;"></ion-icon>
+        </ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="Tab2()">
+        <ion-label>
+          <ion-icon name="car-sport-outline" style="width: 30px; height: 30px;"></ion-icon>
+        </ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="Tab3()">
+        <ion-label>
+          <ion-icon name="book-outline" style="width: 30px; height: 30px;"></ion-icon>
+        </ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>
